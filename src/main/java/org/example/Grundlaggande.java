@@ -54,7 +54,65 @@ farenheit = FtoC(farenheit);
             return (farenheit - 32) * 5 /9;
 
 
+
+
+    IO.println(lika(2,4));
+    }
+    //12
+    public static boolean lika (int a ,int b) {
+
+
+        return a == b;
+
+/*
+        static boolean ärLika(String text1, String text2) {
+            return text1.equals(text2);
+  för text strängar
+
+
+
+
+IO.println(equalsOrDivide5(25));
+
+    }
+    static boolean equalsOrDivide5 (int a) {
+
+        return a % 5== 0;
+
+
+
+
+
+        fizzBuzz(3);
+        fizzBuzz(5);
+        fizzBuzz(7);
+        fizzBuzz(15);
+
+
+    }
+static void fizzBuzz (int a ) {
+
+        if (a % 5 ==0 && a % 3==0){
+        IO.println("Fizz Buzz");
+        }
+        else if (a % 5==0) {
+            IO.println("Buzz");
+        }
+        else if (a % 3==0) {
+            IO.println("Fizz");
+        }
+       else {IO.println("inte delbart med 3 eller 5");}
+
+
+
+    IO.println(makesTen(8,9));
+    }
+        static boolean makesTen(int a, int b){
+
+        return a+b==10;
+
         */
+
 
     }
 
