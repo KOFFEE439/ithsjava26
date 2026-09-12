@@ -111,12 +111,82 @@ static void fizzBuzz (int a ) {
 
         return a+b==10;
 
-        */
+
+        IO.println(right24(98,2));
+
+    }
+        static int right24 (int one, int two) {
+        int sum;
+        if (one + two == 24)
+        {
+            sum = one + two ;
+            return sum;}
+        else if (one - two == 24)
+        {
+            sum = one - two ;
+            return sum;}
+        else if (one * two == 24)
+        { sum = one * two ;
+            return sum;}
+        else if (one / two == 24)
+        { sum = one / two ;
+            IO.println("divided");
+            return sum ;}
+
+        else
+            IO.println("none");
+        return 99;
+        }
+
+
+
+
+
+    }
+        static void winnerGame(int play, int play2){
+        play = IO.readln("spela")(int) (Math.random() * 6) + 1));
+        play2= (int) (Math.random() * 6) + 1;
+        if (play >play2)
+        {
+            IO.readln("player1 winnns");
+        }
+        else if (play<play2){IO.readln("player2 winnns");}
+        else IO.println("oavgjort");
 
 
     }
 
+
+        */
+
+      winnerGame();
+    }
+
+    static void winnerGame() {
+        IO.println("Player 1: press Enter to roll");
+        IO.readln();
+
+        int play = (int) (Math.random() * 6) + 1;
+        IO.println("Player 1 rolled: " + play);
+
+        IO.println("Player 2: press Enter to roll");
+        IO.readln();
+
+        int play2 = (int) (Math.random() * 6) + 1;
+        IO.println("Player 2 rolled: " + play2);
+
+        if (play > play2) {
+            IO.println("Player 1 wins");
+        } else if (play < play2) {
+            IO.println("Player 2 wins");
+        } else {
+            IO.println("Oavgjort");
         }
+
+
+    }
+}
+
 
 
 
