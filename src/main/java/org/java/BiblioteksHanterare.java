@@ -7,7 +7,9 @@ public class BiblioteksHanterare {
         Menu menu = new Menu();
         menu.showMenu();
 
-IO.println("hej");
+IO.println("hej");IO.println("hej");
+        IO.println("hej");
+
 
 
     }
