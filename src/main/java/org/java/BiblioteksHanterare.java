@@ -4,8 +4,8 @@ package org.java;
 public class BiblioteksHanterare {
     static void main() {
 
-      //  Menu menu = new Menu();
-       // menu.showMenu();
+        Menu menu = new Menu();
+        menu.showMenu();
 
     //Todo: Datalagring: böcker och medlemmar lagras i arrayer med fast storlek (ingen ArrayList/Collections).
         // Hantera fallet att arrayen är full.
@@ -23,7 +23,7 @@ public class BiblioteksHanterare {
             System.out.println(book.title());
         }
 
-        */
+        /*
         MemberManager manager = new MemberManager(2);
         String name = IO.readln("Skriv namn på nya medlemmen: ");
 
@@ -34,6 +34,8 @@ public class BiblioteksHanterare {
         manager.registerMember(newMember);
         manager.printMembers();
 
+
+        */
     }
     }
 

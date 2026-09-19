@@ -30,8 +30,21 @@ public class MemberManager {
         }
         members = newMembers;
     }
+//--------------- get number members
+    public Member getMember(int i) {
+        if (i < 0 || i >= numberOfMembers) {
+            return null;
+        }
+        return members[i];
+    }
+        public int getNumberOfMembers(){
+        return numberOfMembers;
+        }
 
-    //---------- skriv ut members
+
+
+
+    //---------- skriv ut members--------test
     public void printMembers() {
         for (int i = 0; i < numberOfMembers; i++) {
             Member member = members[i];
