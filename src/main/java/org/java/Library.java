@@ -24,6 +24,32 @@ public final class Library {
     }
 
  */
+    public record Book(String title, String author, int year){}
+
+
+    private Book[] books = new Book[2];
+    private int numberOfBooks = 0;
+
+    public void addBook(Book book){
+        if (numberOfBooks == books.length){
+            Book[] newBooks = new Book[books.length * 2];
+
+            for (int i = 0; i < books.length ; i++) {
+                newBooks[i] = books[i];
+            }
+            books = newBooks;
+        }
+        books [numberOfBooks] = book;
+        numberOfBooks ++;
+    }
+    public void printBooks(){
+        for (int i = 0; i < numberOfBooks ; i++) {
+            IO.println(books[i]);
+        }
+    }
+
+
+
 }
 
 

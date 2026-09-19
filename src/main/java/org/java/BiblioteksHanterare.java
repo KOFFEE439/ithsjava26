@@ -22,6 +22,7 @@ public class BiblioteksHanterare {
         for (Book book : books) {
             System.out.println(book.title());
         }
+        */
 
         /*
         MemberManager manager = new MemberManager(2);
