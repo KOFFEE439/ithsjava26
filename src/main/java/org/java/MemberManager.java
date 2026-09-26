@@ -42,21 +42,6 @@ public class MemberManager {
         }
 
 
-
-
-    //---------- skriv ut members--------test
-    public void printMembers() {
-        for (int i = 0; i < numberOfMembers; i++) {
-            Member member = members[i];
-
-            System.out.println("ID: " + member.getId());
-            System.out.println("Namn: " + member.getName());
-
-
-
-            System.out.println();
-        }
-    }
 }
 
 

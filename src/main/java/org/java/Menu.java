@@ -2,29 +2,11 @@ package org.java;
 
 public class Menu {
 
+    //Todo:
 
-//Todo Meny & interaktivitet: en robust meny (Scanner) som hanterar felaktig inmatning (t.ex.
-//bokstäver där siffror förväntas) utan att programmet kraschar.
-
-
-    //Todo: Funktionalitet:
-    //◦ Lägga till en ny bok.
-    //◦ Registrera en ny medlem.
-    //◦ Låna en bok — kontrollera att boken finns och inte redan är utlånad.
-    //◦ Lämna tillbaka en bok.
-    //◦ Söka bok på (del av) titel eller författare, skiftlägesokänsligt, via egen sökloop (linjär
-    //sökning).
-    //◦ Visa samtliga böcker med status (utlånad/tillgänglig och till vem).
-
-    //Todo: Felhantering: tydliga meddelanden vid t.ex. bok/medlem som inte hittas, bok som redan är
-    //utlånad, eller ogiltiga menyval — programmet ska aldrig krascha på grund av felaktig inmatning.
-    //Versionshantering: projektet sätts upp i en IDE, byggs med Maven och lämnas in som länk till ett
-    //Git-repository med flera meningsfulla commits (inte en enda stor commit).
-    //Källkritik & reflektion: skriv i projektets README.md en kort beskrivning av lösningen samt en
-    //reflektion kring dina designval (t.ex. record kontra klass).
-
-    //--------------------
-
+    //Låna bok
+    //Lämna tillbaka bok
+    //Visa status för alla böcker
 
     //----------------------- meny
     public void showMenu() {
@@ -56,6 +38,8 @@ public class Menu {
                 case "4":
                 case "5":
                 case "6":
+                    searchBook();
+                    break;
                 case "7":
                     library.printBooks();
                     break;
@@ -108,25 +92,35 @@ public class Menu {
     //-------------------case 1
 
     private void addNewBook() {
+        String title = IO.readln("Ange bokens titel: ");
+        String author = IO.readln("Ange bokens författare: ");
+        int year;
 
         try {
-            String title = IO.readln("Ange bokens title: ");
-            String author = IO.readln("Ange bokens författare: ");
-            int year = Integer.parseInt(IO.readln("Ange bokens utgivningsår: "));
-
-
-            Library.Book book = new Library.Book(title, author, year);
-
-            library.addBook(book);
-
-            IO.println("Boken har lagts till \n");
-        }
-        catch (NumberFormatException e) {
-            IO.println("\n \n Årtalet måste vara heltal. Boken lades inte till, försök igen. \n");
+            year = Integer.parseInt(
+                    IO.readln("Ange bokens utgivningsår: ")
+            );
+        } catch (NumberFormatException e) {
+            IO.println("Årtalet måste vara ett heltal.");
+            return;
         }
 
+        int id = library.getNumberOfBooks() + 1;
 
-    };
+        Library.Book book = new Library.Book(id, title, author, year);
+
+        library.addBook(book);
+
+        IO.println("\n Boken har lagts till med ID: " + book.id() + "\n");
+    }
+
+    //--------------metod sök bok
+    private void searchBook() {
+        String searchText = IO.readln("Skriv in titel eller författare för att söka efter en bok");
+        library.searchBook(searchText);
+    }
+
+
 
 
 
