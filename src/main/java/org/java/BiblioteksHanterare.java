@@ -7,9 +7,6 @@ public class BiblioteksHanterare {
         Menu menu = new Menu();
         menu.showMenu();
 
-    //Todo: Datalagring: böcker och medlemmar lagras i arrayer med fast storlek (ingen ArrayList/Collections).
-        // Hantera fallet att arrayen är full.
-
     }
     }
 

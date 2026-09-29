@@ -12,19 +12,16 @@ public class Member {
         this.borrowedBooks = 0;
     }
 
-    //----------------- get set
-    // getter för id, get return
     public int getId() {
         return id;
     }
 
 
-    // getter för namn
     public String getName() {
         return name;
     }
 
-    // setter för namn, void (string)
+
     public void setName(String name) {
         this.name = name;
     }

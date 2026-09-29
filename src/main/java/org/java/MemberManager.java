@@ -6,13 +6,13 @@ public class MemberManager {
     private int numberOfMembers;
 
 
-    //--------------------konstruktor för antal medlemmar och ökning för array
+
     public MemberManager(int capacity){
         members = new Member[capacity];
         numberOfMembers = 0;
     }
 
-    //---------------registrera en medlem
+
     public void registerMember(Member member){
         if (numberOfMembers == members.length) {
             increaseArraySize();
@@ -21,7 +21,7 @@ public class MemberManager {
         numberOfMembers++;
     }
 
-    //------------------öka array för members
+
     private void increaseArraySize(){
         Member[] newMembers = new Member[members.length * 2];
 
@@ -30,7 +30,7 @@ public class MemberManager {
         }
         members = newMembers;
     }
-//--------------- get number members
+
     public Member getMember(int i) {
         if (i < 0 || i >= numberOfMembers) {
             return null;
