@@ -38,7 +38,7 @@ public class Menu {
                         searchBook();
                         break;
                     case "7":
-                        library.printBooks();
+                        library.printNumberOfBooks(memberManager);
                         break;
                     case "8":
                         menu = false;
@@ -118,12 +118,21 @@ public class Menu {
         }
 
     private void borrowBook() {
-        String input = IO.readln("Ange ID på boken du vill låna: ");
-
         try {
-            int bookId = Integer.parseInt(input);
+            int bookId = Integer.parseInt(
+                    IO.readln("Ange ID på boken du vill låna: ")
+            );
 
-            boolean success = library.borrowBook(bookId);
+            int memberId = Integer.parseInt(
+                    IO.readln("Ange medlems-ID: ")
+            );
+
+            if (!memberManager.memberExists(memberId)) {
+                IO.println("Medlemmen finns inte.");
+                return;
+            }
+
+            boolean success = library.borrowBook(bookId, memberId);
 
             if (success) {
                 IO.println("Boken är nu utlånad.");
@@ -132,7 +141,7 @@ public class Menu {
             }
 
         } catch (NumberFormatException e) {
-            IO.println("Du måste skriva ett heltal.");
+            IO.println("Du måste skriva heltal.");
         }
     }
 

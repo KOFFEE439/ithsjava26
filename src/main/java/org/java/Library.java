@@ -39,31 +39,49 @@ public final class Library {
     private void increaseArraySize() {
         Book[] newBooks = new Book[books.length * 2];
         boolean[] newBorrowed = new boolean[borrowed.length * 2];
+        int[] newBorrowedByMemberId =
+                new int[borrowedByMemberId.length * 2];
 
         for (int i = 0; i < books.length; i++) {
             newBooks[i] = books[i];
             newBorrowed[i] = borrowed[i];
+            newBorrowedByMemberId[i] = borrowedByMemberId[i];
         }
+
         books = newBooks;
         borrowed = newBorrowed;
+        borrowedByMemberId = newBorrowedByMemberId;
     }
 
 
-    public void printBooks() {
+    public void printNumberOfBooks(MemberManager memberManager) {
+        if (numberOfBooks == 0) {
+            IO.println("Det finns inga böcker.");
+            return;
+        }
+
         for (int i = 0; i < numberOfBooks; i++) {
             Book book = books[i];
 
-            String status;
+            IO.println(
+                    "ID: " + book.id()
+                            + ", Titel: " + book.title() + ", Författare: " + book.author() + ", År: " + book.year()
+            );
 
-            if (borrowed[i]) {
-                status = "Utlånad";
+            if (borrowedByMemberId[i] == 0) {
+                IO.println("Status: Är tillgänglig");
             } else {
-                status = "Tillgänglig";
+                String memberName =
+                        memberManager.getMemberNameById(
+                                borrowedByMemberId[i]
+                        );
+
+                IO.println(
+                        "Status: Utlånad till " + memberName + " med medlems-ID " + borrowedByMemberId[i]
+                );
             }
 
-
-            IO.println("ID: " + book.id() + ", Title: " + book.title() + ", Författare: " + book.author() + ", År: " + book.year() + ", Status: "+ status);
-
+            IO.println();
         }
     }
 
@@ -87,28 +105,8 @@ public final class Library {
 
     }
 
-    public void printNumberOfBooks() {
-        if (numberOfBooks == 0) {
-            IO.println(" Det går inte att låna några böcker ");
 
-        }
-        for (int i = 0; i < numberOfBooks; i++) {
-            Book book = books[i];
-            IO.println("ID: " + book.id() + ", Title: " + book.title() + ", Författare: " + book.author() + "År: " + book.year());
-
-
-            if (borrowedByMemberId[i] == 0) {
-                IO.println("Status: Är tillgänglig ");
-            } else {
-                IO.println("Status: Är inte tillgänglig, utlånad till " + borrowedByMemberId[i]);
-            }
-            IO.println();
-        }
-
-
-
-    }
-    public boolean borrowBook(int bookId) {
+    public boolean borrowBook(int bookId, int memberId) {
         for (int i = 0; i < numberOfBooks; i++) {
 
             if (books[i].id() == bookId) {
@@ -118,6 +116,8 @@ public final class Library {
                 }
 
                 borrowed[i] = true;
+                borrowedByMemberId[i] = memberId;
+
                 return true;
             }
         }
@@ -135,6 +135,8 @@ public final class Library {
                 }
 
                 borrowed[i] = false;
+                borrowedByMemberId[i] = 0;
+
                 return true;
             }
         }

@@ -42,7 +42,29 @@ public class MemberManager {
         }
 
 
+
+        public String getMemberNameById(int memberId) {
+        for (int i = 0; i < numberOfMembers; i++) {
+            if (members[i].getId() == memberId) {
+                return members[i].getName();
+            }
+        }
+
+        return "Okänd medlem";
+    }
+
+    public boolean memberExists(int memberId) {
+        for (int i = 0; i < numberOfMembers; i++) {
+            if (members[i].getId() == memberId) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
+
+
 
 
 
